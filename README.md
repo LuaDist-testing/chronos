@@ -1,16 +1,19 @@
 chronos
 =======
 
-High resolution monotic timers for Lua
+High resolution monotonic timers for Lua
 
 
-```
-require("chronos")
+```Lua
+do
+    local chronos = require("chronos")
 
-start = os.nanotime()
-for i = 0, 1e7 do end
-stop = os.nanotime()
 
-print(string.format("loop took %s seconds", stop - start))
->>loop took 0.00010180473327637 seconds
+    local start = chronos.nanotime()
+    os.execute("sleep 1")
+    local stop = chronos.nanotime()
+
+    print(("sleep took %s seconds"):format(stop - start))
+end
+>> sleep took 1.0042656199948 seconds
 ```
